@@ -8,6 +8,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\AuditLogController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', fn() => redirect()->route('login'));
 
@@ -19,6 +20,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('/riwayat', [TransaksiController::class, 'index'])->name('riwayat.index');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware(['can:superadmin'])->group(function () {
         Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
