@@ -381,7 +381,7 @@
                 </div>
 
                 <h1 class="left-title">
-                    Sistem Informasi<br><span>BAN-PDM</span>
+                    Sistem Inventaris<br><span>BAN-PDM</span>
                 </h1>
 
                 <p class="left-sub">

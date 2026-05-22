@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::table('master_category')->insert([
-            ['name'=>'Elektronik','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Elektronik','created_at'=>now(),'updated_at'=>now()],cr
             ['name'=>'Alat Tulis Kantor','created_at'=>now(),'updated_at'=>now()],
             ['name'=>'Furnitur','created_at'=>now(),'updated_at'=>now()],
             ['name'=>'Kebersihan','created_at'=>now(),'updated_at'=>now()],
