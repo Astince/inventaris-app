@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->string('location', 100)->nullable();
             $table->enum('status', ['active','inactive'])->default('active');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('master_category')->onDelete('cascade');
-            $table->foreign('unit_id')->references('id')->on('master_unit')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('master_category')->onDelete('restrict');
+            $table->foreign('unit_id')->references('id')->on('master_unit')->onDelete('restrict');
         });
     }
     public function down(): void { Schema::dropIfExists('master_items'); }

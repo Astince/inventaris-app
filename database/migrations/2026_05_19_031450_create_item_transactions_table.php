@@ -15,10 +15,10 @@ return new class extends Migration {
             $table->text('note')->nullable();
             $table->integer('stock_before')->default(0);
             $table->integer('stock_after')->default(0);
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
-            $table->foreign('item_id')->references('id')->on('master_items')->onDelete('cascade');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('item_id')->references('id')->on('master_items')->onDelete('restrict');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
         });
     }
     public function down(): void { Schema::dropIfExists('item_transactions'); }

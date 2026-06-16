@@ -7,7 +7,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('master_unit', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50);
+            $table->string('name', 50)->unique();
             $table->timestamps();
         });
     }

@@ -6,27 +6,13 @@
 
 {{-- Tombol aksi utama --}}
 <div class="flex flex-wrap gap-3 mb-5">
-    <a href="{{ route('transaksi.create', ['type' => 'in']) }}"
+    <a href="{{ route('transaksi.create') }}"
        class="inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm hover:opacity-90 transition-opacity"
-       style="background:#1a7a4a">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+       style="background: linear-gradient(90deg, #1e3a5f, #2a4f80)">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
         </svg>
-        Barang Masuk
-    </a>
-    <a href="{{ route('transaksi.create', ['type' => 'out']) }}"
-       class="inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-sm hover:opacity-90 transition-opacity bg-red-600">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M19 13H5v-2h14v2z"/>
-        </svg>
-        Barang Keluar
-    </a>
-    <a href="{{ route('riwayat.index') }}"
-       class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
-        </svg>
-        Lihat Riwayat
+        Input Transaksi
     </a>
 </div>
 
@@ -76,6 +62,7 @@
                     <td class="px-4 py-3 text-center font-bold
                                {{ $tx->transaction_type === 'in' ? 'text-green-600' : 'text-red-600' }}">
                         {{ $tx->transaction_type === 'in' ? '+' : '−' }}{{ $tx->qty }}
+                        <span class="text-xs font-normal text-gray-400 ml-0.5">{{ $tx->item->unit->name ?? '' }}</span>
                     </td>
                     <td class="px-4 py-3 text-gray-500 text-xs">{{ $tx->source ?? '-' }}</td>
                     <td class="px-4 py-3 text-gray-500 text-xs">{{ $tx->creator->name ?? '-' }}</td>

@@ -19,7 +19,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name'      => 'required|string|max:100',
             'email'     => 'required|email|unique:users,email',
-            'password'  => 'required|min:6',
+            'password'  => 'required|min:8',
             'role'      => 'required|in:superadmin,operator',
             'is_active' => 'nullable|boolean',
         ]);
@@ -36,9 +36,46 @@ class UserController extends Controller
         return back()->with('success', "Akun '{$user->name}' berhasil ditambahkan.");
     }
 
+    public function update(Request $request, User $user)
+{
+    // Operator hanya boleh edit profil sendiri
+    if (!auth()->user()->isSuperAdmin() && auth()->id() !== $user->id) {
+        abort(403, 'Anda tidak memiliki izin untuk mengubah akun ini.');
+    }
+
+    $rules = [
+        'name'  => 'required|string|max:100',
+        'email' => "required|email|unique:users,email,{$user->id}",
+        'role'  => 'required|in:superadmin,operator',
+    ];
+
+        // Password opsional — hanya diupdate kalau diisi
+        if ($request->filled('password')) {
+            $rules['password'] = 'min:8';
+        }
+
+        $data = $request->validate($rules, [
+            'email.unique' => 'Email sudah digunakan akun lain.',
+        ]);
+
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            unset($data['password']);
+        }
+
+        $user->update($data);
+        AuditLog::create([
+            'user_id'     => auth()->id(),
+            'action'      => 'EDIT_USER',
+            'description' => "Edit akun: {$user->name} ({$user->role})",
+            'timestamp'   => now(),
+        ]);
+        return back()->with('success', "Akun '{$user->name}' berhasil diperbarui.");
+    }
+
     // Toggle aktif / nonaktif
-    public function toggleActive(User $user)
-    {
+    public function toggleActive(User $user)    {
         if ($user->id === auth()->id()) {
             return back()->with('error', 'Tidak bisa menonaktifkan akun sendiri.');
         }

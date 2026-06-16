@@ -111,21 +111,18 @@
                         @endif
                     </td>
                     <td class="px-4 py-3 text-center">
-                        @if($cat->items_count == 0)
-                            <form action="{{ route('master-data.kategori.destroy', $cat) }}" method="POST"
-                                  onsubmit="return confirm('Hapus kategori \'{{ $cat->name }}\'?')">
-                                @csrf @method('DELETE')
-                                <button type="submit"
-                                        class="text-xs bg-red-50 hover:bg-red-100 text-red-600
-                                               px-3 py-1.5 rounded-lg transition-colors">
-                                    Hapus
-                                </button>
-                            </form>
-                        @else
-                            <span class="text-xs text-gray-400" title="Tidak bisa dihapus, masih digunakan">
-                                Digunakan
-                            </span>
-                        @endif
+                        <form action="{{ route('master-data.kategori.destroy', $cat) }}" method="POST"
+                              onsubmit="return confirm('Hapus kategori \'{{ $cat->name }}\'?')">
+                            @csrf @method('DELETE')
+                            <button type="submit"
+                                    class="text-xs px-3 py-1.5 rounded-lg transition-colors
+                                           {{ $cat->items_count > 0
+                                              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                              : 'bg-red-50 hover:bg-red-100 text-red-600' }}"
+                                    {{ $cat->items_count > 0 ? 'disabled' : '' }}>
+                                Hapus
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @empty
@@ -180,21 +177,18 @@
                         @endif
                     </td>
                     <td class="px-4 py-3 text-center">
-                        @if($unit->items_count == 0)
-                            <form action="{{ route('master-data.unit.destroy', $unit) }}" method="POST"
-                                  onsubmit="return confirm('Hapus unit \'{{ $unit->name }}\'?')">
-                                @csrf @method('DELETE')
-                                <button type="submit"
-                                        class="text-xs bg-red-50 hover:bg-red-100 text-red-600
-                                               px-3 py-1.5 rounded-lg transition-colors">
-                                    Hapus
-                                </button>
-                            </form>
-                        @else
-                            <span class="text-xs text-gray-400" title="Tidak bisa dihapus, masih digunakan">
-                                Digunakan
-                            </span>
-                        @endif
+                        <form action="{{ route('master-data.unit.destroy', $unit) }}" method="POST"
+                              onsubmit="return confirm('Hapus unit \'{{ $unit->name }}\'?')">
+                            @csrf @method('DELETE')
+                            <button type="submit"
+                                    class="text-xs px-3 py-1.5 rounded-lg transition-colors
+                                           {{ $unit->items_count > 0
+                                              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                                              : 'bg-red-50 hover:bg-red-100 text-red-600' }}"
+                                    {{ $unit->items_count > 0 ? 'disabled' : '' }}>
+                                Hapus
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @empty

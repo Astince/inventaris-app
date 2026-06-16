@@ -51,7 +51,7 @@
             <button type="submit"
                     class="text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90"
                     style="background:#1e3a5f">
-                Filter
+                Search
             </button>
             @if(request('search') || request('type') || request('from') || request('to'))
                 <a href="{{ route('riwayat.index') }}"
@@ -113,14 +113,18 @@
                                 ↓ Keluar
                             </span>
                         @endif
-                    </td>
                     <td class="px-4 py-3 text-center font-bold
                                {{ $tx->transaction_type === 'in' ? 'text-green-600' : 'text-red-600' }}">
                         {{ $tx->transaction_type === 'in' ? '+' : '−' }}{{ $tx->qty }}
+                        <span class="text-xs font-normal text-gray-400 ml-0.5">{{ $tx->item->unit->name ?? '' }}</span>
                     </td>
-                    <td class="px-4 py-3 text-center text-gray-500">{{ $tx->stock_before }}</td>
+                    <td class="px-4 py-3 text-center text-gray-500">
+                        {{ $tx->stock_before }}
+                        <span class="text-xs text-gray-400 ml-0.5">{{ $tx->item->unit->name ?? '' }}</span>
+                    </td>
                     <td class="px-4 py-3 text-center font-semibold" style="color:#1e3a5f">
                         {{ $tx->stock_after }}
+                        <span class="text-xs text-gray-400 ml-0.5">{{ $tx->item->unit->name ?? '' }}</span>
                     </td>
                     <td class="px-4 py-3 text-gray-500 text-xs">{{ $tx->source ?? '-' }}</td>
                     <td class="px-4 py-3 text-gray-400 text-xs max-w-32 truncate"

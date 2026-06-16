@@ -89,7 +89,7 @@
       <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
       </svg>
-      Laporan Stok
+      Laporan
     </a>
 
     <a href="{{ route('riwayat.index') }}"
@@ -101,6 +101,17 @@
         <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
       </svg>
       Riwayat Transaksi
+    </a>
+
+    <a href="{{ route('users.index') }}"
+       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all
+              {{ request()->routeIs('users.*')
+                 ? 'bg-yellow-400 text-navy font-bold shadow-md'
+                 : 'text-blue-100 hover:bg-white/10 hover:text-white' }}">
+      <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+      </svg>
+      Kelola Akun
     </a>
 
     @if(auth()->user()->role === 'superadmin')
@@ -117,17 +128,6 @@
         <path d="M12 2l-5.5 9h11zm5.5 11c-2.49 0-4.5 2.01-4.5 4.5S15.01 22 17.5 22 22 19.99 22 17.5 19.99 13 17.5 13zm-10 .5h-5v5h5v-5z"/>
       </svg>
       Kategori & Unit
-    </a>
-
-    <a href="{{ route('users.index') }}"
-       class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all
-              {{ request()->routeIs('users.*')
-                 ? 'bg-yellow-400 text-navy font-bold shadow-md'
-                 : 'text-blue-100 hover:bg-white/10 hover:text-white' }}">
-      <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-      </svg>
-      Kelola Akun
     </a>
 
     <p class="text-[10px] font-bold text-blue-300/70 uppercase tracking-widest px-2 pt-4 pb-1.5">
@@ -151,15 +151,24 @@
   {{-- Info User & Logout --}}
   <div class="px-3 py-3 border-t border-white/10">
     <div class="flex items-center gap-2.5 bg-white/10 rounded-xl px-3 py-2.5">
-      {{-- Avatar inisial --}}
-      <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 text-navy"
-           style="background: linear-gradient(135deg, #f5c518, #fdd84e);">
+
+      {{-- Avatar — klik untuk ke profil --}}
+      <a href="{{ route('profile.edit') }}"
+         class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 hover:opacity-80 transition-opacity"
+         style="background: linear-gradient(135deg, #f5c518, #fdd84e); color:#1e3a5f"
+         title="Kelola Profil">
         {{ strtoupper(substr(auth()->user()->name, 0, 2)) }}
-      </div>
+      </a>
+
       <div class="flex-1 min-w-0">
-        <div class="text-sm font-semibold text-white truncate">{{ auth()->user()->name }}</div>
+        {{-- Nama — klik untuk ke profil --}}
+        <a href="{{ route('profile.edit') }}"
+           class="block text-sm font-semibold text-white truncate hover:text-yellow-300 transition-colors">
+          {{ auth()->user()->name }}
+        </a>
         <div class="text-xs text-yellow-300 capitalize">{{ auth()->user()->role }}</div>
       </div>
+
       <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit"
@@ -171,6 +180,7 @@
           </svg>
         </button>
       </form>
+
     </div>
   </div>
 

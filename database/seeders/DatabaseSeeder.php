@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::table('master_category')->insert([
-            ['name'=>'Elektronik','created_at'=>now(),'updated_at'=>now()],cr
+            ['name'=>'Elektronik','created_at'=>now(),'updated_at'=>now()],
             ['name'=>'Alat Tulis Kantor','created_at'=>now(),'updated_at'=>now()],
             ['name'=>'Furnitur','created_at'=>now(),'updated_at'=>now()],
             ['name'=>'Kebersihan','created_at'=>now(),'updated_at'=>now()],
@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            ['name'=>'Super Admin','email'=>'admin@kantor.com','password'=>Hash::make('admin123'),'role'=>'superadmin','created_at'=>now(),'updated_at'=>now()],
-            ['name'=>'Agustine','email'=>'operator@kantor.com','password'=>Hash::make('op123'),'role'=>'operator','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Super Admin','email'=>'superadmin@kantor.com','password'=>Hash::make('admin12345'),'role'=>'superadmin','created_at'=>now(),'updated_at'=>now()],
+            ['name'=>'Agustine','email'=>'operator@kantor.com','password'=>Hash::make('operator123'),'role'=>'operator','created_at'=>now(),'updated_at'=>now()],
         ]);
 
         DB::table('master_items')->insert([

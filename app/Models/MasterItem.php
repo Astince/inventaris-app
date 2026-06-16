@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class MasterItem extends Model
 {
     protected $table = 'master_items';
-    protected $fillable = ['code','name','category_id','unit_id','stock','min_stock','location'];
+    protected $fillable = ['code','name','category_id','unit_id','stock','min_stock','location','status'];
 
     // Buat prefix dari nama kategori: "Alat Tulis Kantor" → "ATK"
     public static function prefixFromCategory(int $categoryId): string

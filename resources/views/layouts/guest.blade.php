@@ -399,13 +399,13 @@
                 <div class="left-divider"></div>
 
                 <p class="left-desc">
-                    Sistem digital untuk pengelolaan data, administrasi, dan layanan BAN-PDM secara efektif dan terintegrasi.
+                    Sistem digital untuk membantu pengelolaan data, administrasi, dan layanan BAN-PDM.
                 </p>
 
                 <div class="left-badges">
                     <span class="left-badge">🔒 Aman</span>
-                    <span class="left-badge">📊 Terintegrasi</span>
-                    <span class="left-badge">✅ Akreditasi</span>
+                    <span class="left-badge">📊 Tersusun</span>
+                    <span class="left-badge">✅ Mendukung Akreditasi</span>
                 </div>
 
             </div>

@@ -35,12 +35,14 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'        => 'required|string|max:100',
+            'name'        => 'required|string|max:100|unique:master_items,name',
             'category_id' => 'required|exists:master_category,id',
             'unit_id'     => 'required|exists:master_unit,id',
             'stock'       => 'required|integer|min:0',
             'min_stock'   => 'nullable|integer|min:0',
             'location'    => 'nullable|string|max:100',
+        ], [
+            'name.unique' => 'Barang dengan nama tersebut sudah ada di sistem.',
         ]);
 
         // Kode generate otomatis berdasarkan kategori
@@ -67,11 +69,13 @@ class BarangController extends Controller
     public function update(Request $request, MasterItem $barang)
     {
         $data = $request->validate([
-            'name'        => 'required|string|max:100',
+            'name'        => "required|string|max:100|unique:master_items,name,{$barang->id}",
             'category_id' => 'required|exists:master_category,id',
             'unit_id'     => 'required|exists:master_unit,id',
             'min_stock'   => 'nullable|integer|min:0',
             'location'    => 'nullable|string|max:100',
+        ], [
+            'name.unique' => 'Barang dengan nama tersebut sudah ada di sistem.',
         ]);
         $data['min_stock'] = $data['min_stock'] ?? 0;
 

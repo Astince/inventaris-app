@@ -7,11 +7,11 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('audit_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('action', 100);
             $table->text('description')->nullable();
             $table->timestamp('timestamp')->useCurrent();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
     public function down(): void { Schema::dropIfExists('audit_logs'); }
