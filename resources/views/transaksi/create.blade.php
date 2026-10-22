@@ -3,7 +3,7 @@
 @section('page-title', 'Input Transaksi')
 
 @section('content')
-<div class="max-w-xl">
+<div class="max-w-xl mx-auto">
   <div class="bg-white rounded-xl border border-gray-200 p-6">
 
     {{-- Tab pilih tipe transaksi --}}
