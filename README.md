@@ -1,58 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Sistem Inventaris Barang Berbasis Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi inventaris barang berbasis web yang dikembangkan menggunakan framework Laravel untuk mendukung pengelolaan data inventaris barang pada Kantor BAN-PDM Provinsi Papua Barat.
 
-## About Laravel
+Proyek ini dibuat sebagai Tugas Akhir pada program studi D3 Teknik Komputer.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Tentang Proyek
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Sistem ini dirancang untuk membantu pengelolaan data inventaris barang melalui aplikasi web. Sistem memiliki dua jenis hak akses, yaitu Super Admin dan Operator, sesuai dengan kewenangan masing-masing pengguna.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Fitur Utama
 
-## Learning Laravel
+1. Pengelolaan data inventaris barang.
+2. Pengelolaan data melalui antarmuka berbasis web.
+3. Hak akses pengguna berdasarkan peran Super Admin dan Operator.
+4. Pencatatan transaksi inventaris.
+5. Penyajian laporan inventaris.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Teknologi yang Digunakan
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Bahasa pemograman            : PHP
+2. Framework                    : Laravel
+3. Database                     : MySQL
+4. Frontend                     : HTML, CSS, JavaScript, dan Tailwind CSS
+5. Code editor                  : Visual Studio Code
+6. Local development environment: Laragon
+7. Version control              : Git dan GitHub
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Dokumentasi Proyek
 
-## Agentic Development
+1. Laporan Tugas Akhir (PDF)
+2. Buku Panduan Pengguna
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Menjalankan Aplikasi Secara Lokal
 
-```bash
-composer require laravel/boost --dev
+Pastikan PHP, Composer, Node,js, npm, dan MySQL telah tersedia pada komputer.
+1. Clone repositori ini:
+   git clone https://github.com/Astince/inventaris-app.git
+2. Masuk ke direktori proyek:
+   cd inventaris-app
+3. Instal dependensi PHP:
+   composer install
+4. Salin file konfigurasi lingkungan:
+   cp .env.example .env
+   Pada Windows, file .env.example juga dapat disalin secara manual menjadi .env.
+5. Buat application key:
+   php artisan key:generate
+6. Buat database MySQL dan sesuaikan konfigurasi database pada file .env.
+7. Jalankan migrasi database sesuai kebutuhan proyek:
+   php artisan migrate
+8. Instal dependensi frontend dan komplikasi aset:
+   npm install
+   npm run build
+9. Jalankan aplikasi:
+   php artisan serve
+10. Buka alamat lokal yang ditampilkan terminal pada browser.
 
-php artisan boost:install
-```
+Catatan: Langkah tambahan mungkin diperlukan sesuai konfigurasi database, data awal, dan kebutuhan aplikasi.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Pengembang
 
-## Contributing
+Agustine Babo Djago
+Lulusan D3 Teknik Komputer, Agustus 2026.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proyek ini merupakan bagian dari pengembangan kemampuan dalam perancangan dan pembangunan aplikasi web menggunanakan Laravel.
